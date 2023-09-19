@@ -2,6 +2,7 @@ package bu.ac.kr.diaryroom.data
 
 import com.google.gson.annotations.SerializedName
 
+
 data class WeatherModel (
     @SerializedName("rainType") var rainType: String = "",      // 강수 형태
     @SerializedName("humidity") var humidity: String = "",      // 습도
@@ -9,6 +10,7 @@ data class WeatherModel (
     @SerializedName("temp") var temp: String = "",          // 기온
     @SerializedName("fcstTime") var fcstTime: String = "",      // 예보시각
 )
+
 
 // xml 파일 형식을 data class로 구현
 data class WEATHER (val response : RESPONSE)

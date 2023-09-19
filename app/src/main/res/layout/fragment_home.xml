@@ -35,15 +35,14 @@
             android:textColor="@color/black"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:visibility="gone" />
-
+            android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/weatherRecyclerView"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
 
         <Button
             android:id="@+id/btnRefresh"
@@ -53,9 +52,4 @@
             android:text="새로고침"/>
 
     </LinearLayout>
-
-
-
-
-
 </layout>
