@@ -11,7 +11,6 @@ import bu.ac.kr.diaryroom.data.WeatherModel
 
 
 class WeatherAdapter (var items : Array<WeatherModel>) : RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
-    // 뷰 홀더 만들어서 반환, 뷰릐 레이아웃은 list_item_weather.xml
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherAdapter.ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item_weather, parent, false)
         return ViewHolder(itemView)
@@ -48,11 +47,11 @@ class WeatherAdapter (var items : Array<WeatherModel>) : RecyclerView.Adapter<We
     // 강수 형태
     fun getRainType(rainType : String) : String {
         return when(rainType) {
-            "0" -> "없음"
+            "0" -> "아무것도 오지않음"
             "1" -> "비"
             "2" -> "비/눈"
             "3" -> "눈"
-            else -> "오류 rainType : " + rainType
+            else -> "오류 rainType : $rainType"
         }
     }
 
@@ -62,7 +61,7 @@ class WeatherAdapter (var items : Array<WeatherModel>) : RecyclerView.Adapter<We
             "1" -> "맑음"
             "3" -> "구름 많음"
             "4" -> "흐림"
-            else -> "오류 rainType : " + sky
+            else -> "오류 rainType : $sky"
         }
     }
 

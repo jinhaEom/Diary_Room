@@ -4,26 +4,29 @@ import android.graphics.Point
 
 class Common {
     // baseTime 설정하기
-    fun getBaseTime(h : String, m : String) : String {
-        var result = ""
+    companion object{
+        fun getBaseTime(h : String, m : String) : String {
+            var result = ""
 
-        // 45분 전이면
-        if (m.toInt() < 45) {
-            // 0시면 2330
-            if (h == "00") result = "2330"
-            // 아니면 1시간 전 날씨 정보 부르기
-            else {
-                var resultH = h.toInt() - 1
-                // 1자리면 0 붙여서 2자리로 만들기
-                if (resultH < 10) result = "0" + resultH + "30"
-                // 2자리면 그대로
-                else result = resultH.toString() + "30"
+            // 45분 전이면
+            if (m.toInt() < 45) {
+                // 0시면 2330
+                if (h == "00") result = "2330"
+                // 아니면 1시간 전 날씨 정보 부르기
+                else {
+                    var resultH = h.toInt() - 1
+                    // 1자리면 0 붙여서 2자리로 만들기
+                    if (resultH < 10) result = "0" + resultH + "30"
+                    // 2자리면 그대로
+                    else result = resultH.toString() + "30"
+                }
             }
-        }
-        // 45분 이후면 바로 정보 받아오기
-        else result = h + "30"
+            // 45분 이후면 바로 정보 받아오기
+            else result = h + "30"
 
-        return result
+            return result
+        }
+
     }
 
     // 위경도를 기상청에서 사용하는 격자 좌표로 변환
