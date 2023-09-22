@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">DiaryRoom</string>
+    <string name="sun">맑음</string>
+    <string name="cloudy">구름 많음</string>
+    <string name="blur">흐림</string>
+    <string name="none">알 수 없음</string>
+
+    <string name="rain">비</string>
+    <string name="rainOrSnow">비/눈</string>
+    <string name="snow">눈</string>
+
 </resources>

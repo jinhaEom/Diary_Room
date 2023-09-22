@@ -11,10 +11,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private val frame: RelativeLayout by lazy { // activity_main의 화면 부분
+    private val frame: RelativeLayout by lazy {
         findViewById(R.id.body_container)
     }
-    private val bottomNagivationView: BottomNavigationView by lazy { // 하단 네비게이션 바
+    private val bottomNagivationView: BottomNavigationView by lazy {
         findViewById(R.id.bottom_navigation)
     }
     override fun onCreate(savedInstanceState: Bundle?) {

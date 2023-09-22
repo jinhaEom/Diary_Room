@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import bu.ac.kr.diaryroom.R.string
 import bu.ac.kr.diaryroom.data.WeatherModel
 
 
@@ -27,6 +28,7 @@ class WeatherAdapter (var items : Array<WeatherModel>) : RecyclerView.Adapter<We
 
     // 뷰 홀더 설정
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+        @SuppressLint("SetTextI18n", "CutPasteId")
         fun setItem(item : WeatherModel) {
             val tvTime = itemView.findViewById<TextView>(R.id.tvTime)           // 시각
             val tvRainType = itemView.findViewById<TextView>(R.id.tvRainType)   // 강수 형태
@@ -34,36 +36,68 @@ class WeatherAdapter (var items : Array<WeatherModel>) : RecyclerView.Adapter<We
             val tvSky = itemView.findViewById<TextView>(R.id.tvSky)             // 하늘 상태
             val tvTemp = itemView.findViewById<TextView>(R.id.tvTemp)           // 온도
             val tvRecommends = itemView.findViewById<TextView>(R.id.tvRecommends)   // 옷 추천
+            val weatherImage = itemView.findViewById<ImageView>(R.id.weatherImage)  //  날씨 이미지
 
-            tvTime.text = item.fcstTime
+
+            val fcstTime = item.fcstTime
+            val formattedTime = "${fcstTime.substring(0, 2)}:${fcstTime.substring(2)}"
+            tvTime.text = formattedTime
+
             tvRainType.text = getRainType(item.rainType)
-            tvHumidity.text = item.humidity
-            tvSky.text = getSky(item.sky)
+            tvHumidity.text = item.humidity+ "%"
+            when (item.sky) {
+                "1" -> {
+                    tvSky.text = string.sun.toString()
+                    weatherImage.setImageResource(R.drawable.sun)
+                }
+                "3" -> {
+                    tvSky.text = string.cloudy.toString()
+                    weatherImage.setImageResource(R.drawable.cloudy)
+                }
+                "4" -> {
+                    tvSky.text = string.blur.toString()
+                    weatherImage.setImageResource(R.drawable.blur)
+                }
+                else -> {
+                    tvSky.text = string.none.toString()
+                    weatherImage.setImageResource(R.drawable.ic_gps_off)
+                }
+            }
+
+
+
+
             tvTemp.text = item.temp + "°"
             tvRecommends.text = getRecommends(item.temp.toInt())
+            if (item.rainType == "0") {
+                itemView.findViewById<TextView>(R.id.tvRainType).visibility = View.GONE
+            } else {
+                itemView.findViewById<TextView>(R.id.tvRainType).visibility = View.VISIBLE
+
+            }
         }
     }
 
     // 강수 형태
     fun getRainType(rainType : String) : String {
         return when(rainType) {
-            "0" -> "아무것도 오지않음"
-            "1" -> "비"
-            "2" -> "비/눈"
-            "3" -> "눈"
+            "0" -> ""
+            "1" -> string.rain.toString()
+            "2" -> string.rainOrSnow.toString()
+            "3" -> string.snow.toString()
             else -> "오류 rainType : $rainType"
         }
     }
 
-    // 하늘 상태
-    fun getSky(sky : String) : String {
-        return when(sky) {
-            "1" -> "맑음"
-            "3" -> "구름 많음"
-            "4" -> "흐림"
-            else -> "오류 rainType : $sky"
-        }
-    }
+//    // 하늘 상태
+//    fun getSky(sky : String) : String {
+//        return when(sky) {
+//            "1" -> "맑음"
+//            "3" -> "구름 많음"
+//            "4" -> "흐림"
+//            else -> "오류 rainType : $sky"
+//        }
+//    }
 
     // 옷 추천
     fun getRecommends(temp : Int) : String{

@@ -63,8 +63,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         weatherArr[i].fcstTime=weather[i].fcstTime
 
                 viewDataBinding.weatherRecyclerView.adapter=WeatherAdapter(weatherArr)
-
-                Toast.makeText(context, weather[0]?.fcstDate + ", "+weather[0]?.fcstTime+"의 날씨 정보입니다.",Toast.LENGTH_SHORT).show()
             }
             Log.d("HomeFragment", "Updating UI with weather data ${weather}")
 
