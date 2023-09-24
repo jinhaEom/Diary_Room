@@ -13,6 +13,7 @@
     <color name="primary_500">#30c6c0</color>
     <color name="icon_green">#768E73</color>
     <color name="gray_100">#F3F3F3</color>
+    <color name="gray_300">#8C8C8C</color>
 
 
 </resources>

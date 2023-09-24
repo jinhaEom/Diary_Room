@@ -27,7 +27,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         viewDataBinding.weatherRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        viewDataBinding.tvDate.text = SimpleDateFormat("MM월 dd일", Locale.getDefault()).format(Calendar.getInstance().time) + "날씨"
+       // viewDataBinding.tvDate.text = SimpleDateFormat("MM월 dd일", Locale.getDefault()).format(Calendar.getInstance().time) + "날씨"
 
         // nx, ny지점의 날씨 가져와서 설정하기
         viewModel.setWeather()

@@ -4,104 +4,149 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
-        android:background="@color/gray_100"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginTop="20dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCircle"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/circle"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTime"
+            app:layout_constraintTop_toTopOf="@+id/tvTime" />
+
+
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:text="10:00"
-            android:textSize="16dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/devideView"
+            android:textSize="20dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintStart_toEndOf="@id/ivCircle"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/weatherImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/cloudy"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTime" />
-
-        <TextView
-            android:id="@+id/tvHumidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="50%"
-            android:textColor="@color/black"
-            android:textSize="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/weatherImage"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/weatherImage"
-            app:layout_constraintTop_toTopOf="@+id/weatherImage" />
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSky"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/weatherImage"
-            app:layout_constraintStart_toStartOf="@id/weatherImage"
-            app:layout_constraintTop_toBottomOf="@id/weatherImage"
-            tools:text="맑음" />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRainType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@id/weatherImage"
-            app:layout_constraintStart_toStartOf="@id/weatherImage"
-            app:layout_constraintTop_toBottomOf="@id/weatherImage"
-            tools:text="눈" />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTemp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/weatherImage"
-            app:layout_constraintEnd_toStartOf="@+id/weatherImage"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/weatherImage"
-            tools:text="10도씨" />
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRecommendsTx"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxEms="15"
-            android:maxLines="2"
-            android:text="OOTD"
-            android:layout_marginStart="12dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSky"
-        />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRecommends"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="오늘 옷차림은 이것!"
-            android:layout_marginBottom="4dp"
+        <View
+            android:id="@+id/devideView"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:background="@color/icon_green"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imageCs"
+            app:layout_constraintStart_toEndOf="@id/tvTime"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/imageCs"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_gray100_radius12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvRecommendsTx"
-            app:layout_constraintTop_toBottomOf="@id/tvRecommendsTx"
-            />
+            app:layout_constraintStart_toEndOf="@+id/devideView"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/weatherImage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/cloudy"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50%"
+                android:textColor="@color/black"
+                android:textSize="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/weatherImage"
+                app:layout_constraintStart_toStartOf="@+id/tvTemp"
+                app:layout_constraintTop_toBottomOf="@+id/tvTemp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSky"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/tvRecommendsTx"
+                app:layout_constraintEnd_toEndOf="@id/weatherImage"
+                app:layout_constraintStart_toStartOf="@id/weatherImage"
+                app:layout_constraintTop_toBottomOf="@id/weatherImage"
+                tools:text="맑음" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRainType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/tvRecommendsTx"
+                app:layout_constraintEnd_toEndOf="@id/weatherImage"
+                app:layout_constraintStart_toStartOf="@id/weatherImage"
+                app:layout_constraintTop_toBottomOf="@id/weatherImage"
+                tools:text="눈" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+
+                tools:text="10도씨" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRecommendsTx"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxEms="15"
+                android:maxLines="2"
+                android:text="OOTD"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSky" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRecommends"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="오늘 옷차림은 이것!"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvRecommendsTx"
+                app:layout_constraintTop_toBottomOf="@id/tvRecommendsTx" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
