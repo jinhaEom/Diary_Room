@@ -7,7 +7,7 @@ import bu.ac.kr.diaryroom.databinding.FragmentSettingBinding
 class SettingFragment(override val layoutResourceId : Int = R.layout.fragment_setting):
     BaseFragment<FragmentSettingBinding>(){
     override fun aboutBinding() {
-        viewDataBinding.lifecycleOwner = this@SettingFragment
+        viewDataBinding.lifecycleOwner = viewLifecycleOwner
 
         viewDataBinding.apply{
 

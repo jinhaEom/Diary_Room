@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import bu.ac.kr.diaryroom.*
 import bu.ac.kr.diaryroom.base.BaseFragment
@@ -23,19 +24,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     @SuppressLint("SetTextI18n")
     override fun aboutBinding() {
+        viewDataBinding.lifecycleOwner = viewLifecycleOwner
         viewModel = ViewModelProvider(this)[WeatherViewModel::class.java]
 
         viewDataBinding.weatherRecyclerView.layoutManager = LinearLayoutManager(context)
 
-       // viewDataBinding.tvDate.text = SimpleDateFormat("MM월 dd일", Locale.getDefault()).format(Calendar.getInstance().time) + "날씨"
 
         // nx, ny지점의 날씨 가져와서 설정하기
         viewModel.setWeather()
 
-        // <새로고침> 버튼 누를 때 날씨 정보 다시 가져오기
-        viewDataBinding.btnRefresh.setOnClickListener {
-            viewModel.setWeather()
-        }
+
+
     }
 
     @SuppressLint("SetTextI18n")

@@ -11,7 +11,10 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/actionDiaryFragment"
-            app:destination="@id/diaryFragment" />
+            app:destination="@id/diaryFragment"/>
+        <action
+            android:id="@+id/actionSettingFragment"
+            app:destination="@id/settingFragment"/>
     </fragment>
 
     <fragment
@@ -20,9 +23,19 @@
         android:label="diaryFragment"
         tools:layout="@layout/fragment_diary">
         <action
-            android:id="@+id/actionSettingFragment"
-            app:destination="@id/settingFragment" />
+            android:id="@+id/actionDiaryFragment"
+            app:destination="@id/diaryFragment"/>
+        <action
+            android:id="@+id/actionDiaryWrittingFragment"
+            app:destination="@id/diaryWrittingFragment"/>
+
     </fragment>
+
+    <fragment
+        android:id="@+id/diaryWrittingFragment"
+        android:name="bu.ac.kr.diaryroom.diary.DiaryWrittingFragment"
+        android:label="diaryWrittingFragment"
+        tools:layout="@layout/fragment_diary_writting"/>
 
 
     <fragment
@@ -30,9 +43,9 @@
         android:name="bu.ac.kr.diaryroom.setting.SettingFragment"
         android:label="settingFragment"
         tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/actionSettingFragment"
+            app:destination="@id/settingFragment"/>
     </fragment>
-
-
-
 
 </navigation>
