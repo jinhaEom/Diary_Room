@@ -11,7 +11,7 @@
         android:background="@drawable/background_gray100_radius12dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/dairyDate"
+            android:id="@+id/diaryDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -28,12 +28,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/gray_300"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/dairyDate"
-            app:layout_constraintTop_toBottomOf="@+id/dairyDate"
+            app:layout_constraintStart_toStartOf="@id/diaryDate"
+            app:layout_constraintTop_toBottomOf="@+id/diaryDate"
             tools:text="행복했던 오늘의 일기" />
 
         <androidx.appcompat.widget.AppCompatImageView
