@@ -1,4 +1,4 @@
-package bu.ac.kr.diaryroom
+package bu.ac.kr.diaryroom.home
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,18 +7,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import bu.ac.kr.diaryroom.R
 import bu.ac.kr.diaryroom.R.string
 import bu.ac.kr.diaryroom.data.WeatherModel
 
 
 class WeatherAdapter (var items : Array<WeatherModel>) : RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item_weather, parent, false)
         return ViewHolder(itemView)
     }
 
     // 전달받은 위치의 아이템 연결
-    override fun onBindViewHolder(holder: WeatherAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.setItem(item)
     }

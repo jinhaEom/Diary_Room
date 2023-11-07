@@ -4,17 +4,14 @@ package bu.ac.kr.diaryroom.home
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import bu.ac.kr.diaryroom.*
 import bu.ac.kr.diaryroom.base.BaseFragment
 import bu.ac.kr.diaryroom.data.WeatherModel
 import bu.ac.kr.diaryroom.databinding.FragmentHomeBinding
 import bu.ac.kr.diaryroom.viewModel.WeatherViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
@@ -61,7 +58,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     if(i < weather.size)
                         weatherArr[i].fcstTime=weather[i].fcstTime
 
-                viewDataBinding.weatherRecyclerView.adapter=WeatherAdapter(weatherArr)
+                viewDataBinding.weatherRecyclerView.adapter= WeatherAdapter(weatherArr)
             }
             Log.d("HomeFragment", "Updating UI with weather data ${weather}")
 

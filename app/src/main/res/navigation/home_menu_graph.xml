@@ -22,12 +22,13 @@
         android:name="bu.ac.kr.diaryroom.diary.DiaryFragment"
         android:label="diaryFragment"
         tools:layout="@layout/fragment_diary">
-        <action
-            android:id="@+id/actionDiaryFragment"
-            app:destination="@id/diaryFragment"/>
+
         <action
             android:id="@+id/actionDiaryWrittingFragment"
             app:destination="@id/diaryWrittingFragment"/>
+        <action
+            android:id="@+id/actiondiaryDetailFragment"
+            app:destination="@id/diaryDetailFragment"/>
 
     </fragment>
 
@@ -47,5 +48,13 @@
             android:id="@+id/actionSettingFragment"
             app:destination="@id/settingFragment"/>
     </fragment>
+    <fragment
+        android:id="@+id/diaryDetailFragment"
+        android:name="bu.ac.kr.diaryroom.diary.DiaryDetailFragment"
+        android:label="diaryDetailFragment"
+        tools:layout="@layout/fragment_diary_detail"/>
+    <action
+        android:id="@id/actionDiaryFragment"
+        app:destination="@id/diaryFragment"/>
 
 </navigation>

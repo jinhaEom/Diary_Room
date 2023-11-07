@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import bu.ac.kr.diaryroom.Common.Companion.getBaseTime
-import bu.ac.kr.diaryroom.WeatherRepository
+import bu.ac.kr.diaryroom.home.WeatherRepository
 import bu.ac.kr.diaryroom.data.ITEM
 import bu.ac.kr.diaryroom.data.WEATHER
 import retrofit2.Call

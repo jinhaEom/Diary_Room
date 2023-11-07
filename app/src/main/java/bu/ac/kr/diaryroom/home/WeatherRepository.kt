@@ -1,4 +1,4 @@
-package bu.ac.kr.diaryroom
+package bu.ac.kr.diaryroom.home
 
 import android.util.Log
 import bu.ac.kr.diaryroom.Interface.ApiObject
