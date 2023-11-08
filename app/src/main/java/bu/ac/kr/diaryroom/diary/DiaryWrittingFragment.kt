@@ -23,6 +23,7 @@ import bu.ac.kr.diaryroom.diary.adapter.MultiImageAdapter
 import bu.ac.kr.diaryroom.diary.data.DiaryItem
 import bu.ac.kr.diaryroom.utils.setOnOneClickListener
 import bu.ac.kr.diaryroom.viewModel.DiaryViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileNotFoundException
@@ -43,19 +44,32 @@ class DiaryWrittingFragment(override val layoutResourceId: Int = R.layout.fragme
     override fun aboutBinding() {
         viewDataBinding.lifecycleOwner = viewLifecycleOwner
 
-        viewDataBinding.diarySaveButton.setOnClickListener {
-            val currentTime =
-                SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분", Locale.getDefault()).format(Date())
-            val title = viewDataBinding.diaryTitle.text.toString()
-            val content = viewDataBinding.diaryContent.text.toString()
+        viewDataBinding.apply{
+            viewDataBinding.diarySaveButton.setOnClickListener {
+                if (diaryTitle.text.isNullOrEmpty() || diaryContent.text.isNullOrEmpty()) {
+                    Snackbar.make(requireView(), "내용을 입력해주세요.", Snackbar.LENGTH_SHORT).show()
 
-            val newItem = DiaryItem(0, currentTime, title, imageFilenames.joinToString(","), content)
-            lifecycleScope.launch {
-                saveDiaryItem(requireContext(), newItem)
-                Log.d("saveDiary","${newItem}")
+                }else{
+                    val currentTime =
+                        SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분", Locale.getDefault()).format(Date())
+                    val title = viewDataBinding.diaryTitle.text.toString()
+                    val content = viewDataBinding.diaryContent.text.toString()
 
-                findNavController().popBackStack()  // 데이터베이스 작업이 완료된 후에 화면 바꾸기
+                    val newItem = DiaryItem(0, currentTime, title, imageFilenames.joinToString(","), content)
+                    lifecycleScope.launch {
+                        saveDiaryItem(requireContext(), newItem)
+                        Log.d("saveDiary","${newItem}")
+
+                        findNavController().popBackStack()
+                        Snackbar.make(requireView(), "일기가 저장되었어요.", Snackbar.LENGTH_SHORT).show()
+
+                    }
+                }
+
+
+
             }
+
         }
 
 
@@ -102,6 +116,8 @@ class DiaryWrittingFragment(override val layoutResourceId: Int = R.layout.fragme
                 data?.data?.let { uri ->
                     val filename = "${System.currentTimeMillis()}.jpg"
                     saveImage(requireContext(), uri, filename)
+                    imageFilenames.add(filename)
+
                     list.add(uri)
                 }
             }
