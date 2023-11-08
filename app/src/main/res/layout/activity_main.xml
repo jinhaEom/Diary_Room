@@ -8,11 +8,14 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".MainActivity">
+
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_alignParentTop="true"
         app:defaultNavHost="true"
         app:navGraph="@navigation/home_menu_graph" />
 
@@ -23,7 +26,7 @@
         android:layout_alignParentBottom="true"
         android:elevation="2dp"
         app:itemIconSize="22dp"
-        app:itemIconTint="@color/icon_green"
+        app:itemIconTint="#85A0E6"
         app:backgroundTint="@color/white"
         app:itemTextColor="@color/black"
         app:itemRippleColor="@android:color/transparent"

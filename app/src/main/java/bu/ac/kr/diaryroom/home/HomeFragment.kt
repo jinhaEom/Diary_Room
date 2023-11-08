@@ -54,9 +54,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     index++
                 }
 
-                for (i in 0..5)
-                    if(i < weather.size)
-                        weatherArr[i].fcstTime=weather[i].fcstTime
+                for (i in 0..5) weatherArr[i].fcstTime = weather[i].fcstTime
+
 
                 viewDataBinding.weatherRecyclerView.adapter= WeatherAdapter(weatherArr)
             }

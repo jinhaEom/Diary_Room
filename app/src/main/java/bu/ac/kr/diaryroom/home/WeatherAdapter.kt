@@ -48,19 +48,19 @@ class WeatherAdapter (var items : Array<WeatherModel>) : RecyclerView.Adapter<We
             tvHumidity.text = item.humidity+ "%"
             when (item.sky) {
                 "1" -> {
-                    tvSky.text = string.sun.toString()
+                    tvSky.text = itemView.context.getString(R.string.sun)
                     weatherImage.setImageResource(R.drawable.sun)
                 }
                 "3" -> {
-                    tvSky.text = string.cloudy.toString()
+                    tvSky.text = itemView.context.getString(R.string.cloudy)
                     weatherImage.setImageResource(R.drawable.cloudy)
                 }
                 "4" -> {
-                    tvSky.text = string.blur.toString()
+                    tvSky.text = itemView.context.getString(R.string.blur)
                     weatherImage.setImageResource(R.drawable.blur)
                 }
                 else -> {
-                    tvSky.text = string.none.toString()
+                    tvSky.text = itemView.context.getString(R.string.none)
                     weatherImage.setImageResource(R.drawable.ic_gps_off)
                 }
             }

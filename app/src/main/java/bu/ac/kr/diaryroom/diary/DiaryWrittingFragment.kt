@@ -70,6 +70,7 @@ class DiaryWrittingFragment(override val layoutResourceId: Int = R.layout.fragme
 
             startActivityForResult(intent,200)
             viewDataBinding.imageAddButton.visibility = View.GONE
+            viewDataBinding.chooseImageTx.visibility = View.GONE
 
         }
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

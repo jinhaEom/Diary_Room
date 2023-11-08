@@ -5,6 +5,8 @@ import bu.ac.kr.diaryroom.BuildConfig
 import bu.ac.kr.diaryroom.data.WEATHER
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,7 +15,7 @@ import retrofit2.http.Query
 
 interface WeatherInterface {
     // getUltraSrtFcst : 초단기 예보 조회 + 인증키
-    @GET(BuildConfig.WEATHER_API_KEY)
+    @GET("getUltraSrtFcst?serviceKey=${BuildConfig.WEATHER_API_KEY}")
 
     fun GetWeather(@Query("numOfRows") num_of_rows : Int,   // 한 페이지 경과 수
                    @Query("pageNo") page_no : Int,          // 페이지 번호
@@ -36,10 +38,18 @@ data class ITEMS(val item : List<ITEM>)
 data class ITEM(val category : String, val fcstDate : String, val fcstTime : String, val fcstValue : String)
 
 // retrofit을 사용하기 위한 빌더 생성
-private val retrofit = Retrofit.Builder()
+val logging = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+
+val client = OkHttpClient.Builder()
+    .addInterceptor(logging)
+    .build()
+
+val retrofit = Retrofit.Builder()
     .baseUrl("http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/")
+    .client(client)
     .addConverterFactory(GsonConverterFactory.create())
     .build()
+
 
 val gson : Gson = GsonBuilder()
     .setLenient()
