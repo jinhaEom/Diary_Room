@@ -1,9 +1,7 @@
 package bu.ac.kr.diaryroom.home
 
-
 import android.annotation.SuppressLint
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,26 +9,36 @@ import bu.ac.kr.diaryroom.*
 import bu.ac.kr.diaryroom.base.BaseFragment
 import bu.ac.kr.diaryroom.data.WeatherModel
 import bu.ac.kr.diaryroom.databinding.FragmentHomeBinding
+import bu.ac.kr.diaryroom.diary.data.DiaryDatabase
+import bu.ac.kr.diaryroom.viewModel.DiaryViewModel
+import bu.ac.kr.diaryroom.viewModel.Factory.DiaryViewModelFactory
 import bu.ac.kr.diaryroom.viewModel.WeatherViewModel
-import java.util.*
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val layoutResourceId: Int = R.layout.fragment_home
 
-    private lateinit var viewModel : WeatherViewModel
+    private lateinit var viewModel: WeatherViewModel
+    private lateinit var diaryViewModel: DiaryViewModel
 
     @SuppressLint("SetTextI18n")
     override fun aboutBinding() {
         viewDataBinding.lifecycleOwner = viewLifecycleOwner
         viewModel = ViewModelProvider(this)[WeatherViewModel::class.java]
-
-        viewDataBinding.weatherRecyclerView.layoutManager = LinearLayoutManager(context)
-
-
-        // nx, ny지점의 날씨 가져와서 설정하기
+        val application = requireNotNull(this.activity).application
+        val dataSource = DiaryDatabase.getInstance(application).diaryItemDao()
+        val viewModelFactory = DiaryViewModelFactory(dataSource)
+        diaryViewModel = ViewModelProvider(this, viewModelFactory).get(DiaryViewModel::class.java)
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        viewDataBinding.weatherRecyclerView.layoutManager = layoutManager
         viewModel.setWeather()
 
-
+        diaryViewModel.todayDiary.observe(viewLifecycleOwner) { diary ->
+            if (diary != null) {
+                viewDataBinding.adviceTx.text = getString(R.string.already_writting_diary)
+            } else {
+                viewDataBinding.adviceTx.text = getString(R.string.advice_writting_diary)
+            }
+        }
 
     }
 
@@ -38,13 +46,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun observeData() {
         viewModel.weatherData.observe(viewLifecycleOwner, Observer { weather ->
             if (weather.isNotEmpty()) {
-                val weatherArr = arrayOf(WeatherModel(), WeatherModel(), WeatherModel(), WeatherModel(), WeatherModel(), WeatherModel())
+                val weatherArr = arrayOf(
+                    WeatherModel(),
+                    WeatherModel(),
+                    WeatherModel(),
+                    WeatherModel(),
+                    WeatherModel(),
+                    WeatherModel()
+                )
                 var index = 0
 
                 for (i in weather.indices) {
                     index %= 6
 
-                    when(weather[i].category) {
+                    when (weather[i].category) {
                         "PTY" -> weatherArr[index].rainType = weather[i].fcstValue     // 강수 형태
                         "REH" -> weatherArr[index].humidity = weather[i].fcstValue     // 습도
                         "SKY" -> weatherArr[index].sky = weather[i].fcstValue          // 하늘 상태
@@ -57,22 +72,43 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 for (i in 0..5) weatherArr[i].fcstTime = weather[i].fcstTime
 
 
-                viewDataBinding.weatherRecyclerView.adapter= WeatherAdapter(weatherArr)
+                var weatherList = weatherArr.toList()
+                weatherList = weatherList.drop(1) // 첫 번째 index 제거(현재 날씨는 상단에 보이기 때문)
+                viewDataBinding.weatherRecyclerView.adapter = WeatherAdapter(weatherList.toTypedArray())
+
+                // 가장 최근의 날씨 데이터
+                val recentWeather = weatherArr[0]
+                viewDataBinding.nowTvTemp.text = "${recentWeather.temp}°"
+                viewDataBinding.nowTvSky.text = recentWeather.sky
+                viewDataBinding.nowTvHumidity.text = "${recentWeather.humidity}%"
+
+                when (recentWeather.sky) {
+                    "1" -> {
+                        viewDataBinding.nowTvSky.text = requireContext().getString(R.string.sun)
+                        viewDataBinding.nowWeatherIv.setImageResource(R.drawable.sun)
+                    }
+
+                    "3" -> {
+                        viewDataBinding.nowTvSky.text = requireContext().getString(R.string.cloudy)
+                        viewDataBinding.nowWeatherIv.setImageResource(R.drawable.cloudy)
+                    }
+
+                    "4" -> {
+                        viewDataBinding.nowTvSky.text = requireContext().getString(R.string.blur)
+                        viewDataBinding.nowWeatherIv.setImageResource(R.drawable.blur)
+                    }
+
+                    else -> {
+                        viewDataBinding.nowTvSky.text = requireContext().getString(R.string.none)
+                        viewDataBinding.nowWeatherIv.setImageResource(R.drawable.ic_gps_off)
+                    }
+                }
             }
             Log.d("HomeFragment", "Updating UI with weather data ${weather}")
-
         })
 
-        viewModel.error.observe(viewLifecycleOwner, Observer { error ->
-            Log.e("HomeFragment", "Updating UI with error message $error")
-
-            if (!error.isNullOrEmpty()) {
-                viewDataBinding.tvError.text="api fail: $error\n다시 시도해주세요."
-                viewDataBinding.tvError.visibility=View.VISIBLE
-
-            } else{
-                viewDataBinding.tvError.visibility=View.GONE
-            }
-        })
+//        viewModel.error.observe(viewLifecycleOwner, Observer { error ->
+//            Log.e("HomeFragment", "Updating UI with error message $error")
+//        })
     }
 }

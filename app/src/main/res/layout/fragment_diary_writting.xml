@@ -102,8 +102,7 @@
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imageCs" />
+                    app:layout_constraintStart_toStartOf="parent" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -133,19 +132,19 @@
                 android:id="@+id/diaryContent"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:padding="20dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/background_gray100_radius12dp"
-                app:layout_constraintBottom_toTopOf="@id/diarySaveButton"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:gravity="top"
+                android:padding="20dp"
                 android:textColor="@color/black"
                 android:textSize="14dp"
-                tools:text="asdfasdf"
+                app:layout_constraintBottom_toTopOf="@id/diarySaveButton"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageLl" />
+                app:layout_constraintTop_toBottomOf="@id/imageLl"
+                tools:text="asdfasdf" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/diarySaveButton"
@@ -155,10 +154,10 @@
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="18dp"
+                android:background="@drawable/background_12dp_signature_color_box"
                 android:text="다이어리 저장"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:background="@drawable/background_12dp_signature_color_box"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/diaryContent" />
 

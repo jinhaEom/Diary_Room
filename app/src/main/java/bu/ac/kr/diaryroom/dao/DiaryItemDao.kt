@@ -1,6 +1,7 @@
 package bu.ac.kr.diaryroom.dao
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -18,6 +19,10 @@ interface DiaryItemDao {
 
     @Insert
     suspend fun insertDiaryItem(diaryItem: DiaryItem)
+
+    @Query("SELECT * FROM diary_items WHERE date = :todayDate LIMIT 1")
+    fun getTodayDiary(todayDate: String): LiveData<DiaryItem?>
+
 }
 
 suspend fun saveDiaryItem(context: Context, diaryItem: DiaryItem) {

@@ -15,6 +15,8 @@
     <color name="gray_100">#F3F3F3</color>
     <color name="gray_300">#8C8C8C</color>
     <color name="signature_color">#85A0E6</color>
+    <color name="dark_blue">#707287</color>
+    <color name="dark104_blue">#545768</color>
 
 
 </resources>

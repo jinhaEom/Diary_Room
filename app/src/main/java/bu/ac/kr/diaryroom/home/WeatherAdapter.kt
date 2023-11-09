@@ -32,11 +32,11 @@ class WeatherAdapter (var items : Array<WeatherModel>) : RecyclerView.Adapter<We
         @SuppressLint("SetTextI18n", "CutPasteId")
         fun setItem(item : WeatherModel) {
             val tvTime = itemView.findViewById<TextView>(R.id.tvTime)           // 시각
-            val tvRainType = itemView.findViewById<TextView>(R.id.tvRainType)   // 강수 형태
+//            val tvRainType = itemView.findViewById<TextView>(R.id.tvRainType)   // 강수 형태
             val tvHumidity = itemView.findViewById<TextView>(R.id.tvHumidity)   // 습도
             val tvSky = itemView.findViewById<TextView>(R.id.tvSky)             // 하늘 상태
             val tvTemp = itemView.findViewById<TextView>(R.id.tvTemp)           // 온도
-            val tvRecommends = itemView.findViewById<TextView>(R.id.tvRecommends)   // 옷 추천
+//            val tvRecommends = itemView.findViewById<TextView>(R.id.tvRecommends)   // 옷 추천
             val weatherImage = itemView.findViewById<ImageView>(R.id.weatherImage)  //  날씨 이미지
 
 
@@ -44,7 +44,7 @@ class WeatherAdapter (var items : Array<WeatherModel>) : RecyclerView.Adapter<We
             val formattedTime = "${fcstTime.substring(0, 2)}:${fcstTime.substring(2)}"
             tvTime.text = formattedTime
 
-            tvRainType.text = getRainType(item.rainType)
+//            tvRainType.text = getRainType(item.rainType)
             tvHumidity.text = item.humidity+ "%"
             when (item.sky) {
                 "1" -> {
@@ -64,18 +64,14 @@ class WeatherAdapter (var items : Array<WeatherModel>) : RecyclerView.Adapter<We
                     weatherImage.setImageResource(R.drawable.ic_gps_off)
                 }
             }
-
-
-
-
             tvTemp.text = item.temp + "°"
-            tvRecommends.text = getRecommends(item.temp.toInt())
-            if (item.rainType == "0") {
-                itemView.findViewById<TextView>(R.id.tvRainType).visibility = View.GONE
-            } else {
-                itemView.findViewById<TextView>(R.id.tvRainType).visibility = View.VISIBLE
-
-            }
+//            tvRecommends.text = getRecommends(item.temp.toInt())
+//            if (item.rainType == "0") {
+//                itemView.findViewById<TextView>(R.id.tvRainType).visibility = View.GONE
+//            } else {
+//                itemView.findViewById<TextView>(R.id.tvRainType).visibility = View.VISIBLE
+//
+//            }
         }
     }
 

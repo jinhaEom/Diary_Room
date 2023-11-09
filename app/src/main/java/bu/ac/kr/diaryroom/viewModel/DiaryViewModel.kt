@@ -11,9 +11,11 @@ import bu.ac.kr.diaryroom.diary.data.DiaryItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class DiaryViewModel(private val diaryItemDao: DiaryItemDao) : ViewModel() {
-    val diaryItems: LiveData<List<DiaryItem>> = diaryItemDao.getAllDiaryItems().asLiveData()
     private val _selectedDiaryItem = MutableLiveData<DiaryItem>()
     val selectedDiaryItem: LiveData<DiaryItem> get() = _selectedDiaryItem
 
@@ -29,4 +31,6 @@ class DiaryViewModel(private val diaryItemDao: DiaryItemDao) : ViewModel() {
     fun selectDiaryItem(item: DiaryItem) {
         _selectedDiaryItem.value = item
     }
+    val todayDate = SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault()).format(Date())
+    val todayDiary: LiveData<DiaryItem?> = diaryItemDao.getTodayDiary(todayDate)
 }

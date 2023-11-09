@@ -2,47 +2,114 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="homeFragment"
             type="bu.ac.kr.diaryroom.home.HomeFragment" />
 
 
     </data>
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
+        android:background="@drawable/gra_background"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvDate"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="Today's Weather"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:gravity="center"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvError"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/adviceCl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="에러 : "
-            android:textSize="30dp"
-            android:textColor="@color/black"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:visibility="gone"/>
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/adviceTx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="아직 오늘의 일기가 없어요\n오늘의 일기를 작성해볼까요?" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nowWeather"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/adviceCl">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/nowTvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/black"
+                android:textSize="48dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="30도" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/nowTvSky"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28dp"
+                app:layout_constraintStart_toStartOf="@id/nowTvTemp"
+                app:layout_constraintTop_toBottomOf="@id/nowTvTemp"
+                tools:text="맑음" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/nowTvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="@id/nowTvTemp"
+                app:layout_constraintTop_toBottomOf="@id/nowTvSky"
+                tools:text="80%" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/nowWeatherIv"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/nowTvTemp"
+                tools:src="@drawable/sun" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/weatherRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nowWeather" />
 
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

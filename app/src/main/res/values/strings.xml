@@ -9,4 +9,7 @@
     <string name="rainOrSnow">비/눈</string>
     <string name="snow">눈</string>
 
+    <string name="advice_writting_diary">아직 오늘의 일기가 없어요\n오늘의 일기를 작성해볼까요?😀</string>
+    <string name="already_writting_diary">오늘의 일기를 작성했어요!😁</string>
+
 </resources>

@@ -51,7 +51,7 @@ class DiaryWrittingFragment(override val layoutResourceId: Int = R.layout.fragme
 
                 }else{
                     val currentTime =
-                        SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분", Locale.getDefault()).format(Date())
+                        SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault()).format(Date())
                     val title = viewDataBinding.diaryTitle.text.toString()
                     val content = viewDataBinding.diaryContent.text.toString()
 
