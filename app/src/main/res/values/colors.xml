@@ -12,9 +12,11 @@
 
     <color name="primary_500">#30c6c0</color>
     <color name="icon_green">#768E73</color>
-    <color name="gray_100">#F3F3F3</color>
+    <color name="gray_100">#EBECF0</color>
     <color name="gray_300">#8C8C8C</color>
-    <color name="signature_color">#85A0E6</color>
+
+    <color name="signature_color">#B4C4EF</color>
+    <color name="light_signature_color">#D5E2F9</color>
     <color name="dark_blue">#707287</color>
     <color name="dark104_blue">#545768</color>
 
