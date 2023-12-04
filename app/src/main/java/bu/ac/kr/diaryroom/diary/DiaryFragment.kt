@@ -1,6 +1,7 @@
 package bu.ac.kr.diaryroom.diary
 
 import DiaryAdapter
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -12,6 +13,9 @@ import bu.ac.kr.diaryroom.diary.data.DiaryDatabase
 import bu.ac.kr.diaryroom.utils.getNavOptions
 import bu.ac.kr.diaryroom.viewModel.DiaryViewModel
 import bu.ac.kr.diaryroom.viewModel.Factory.DiaryViewModelFactory
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class DiaryFragment(override val layoutResourceId: Int = R.layout.fragment_diary) :
     BaseFragment<FragmentDiaryBinding>() {
@@ -41,6 +45,32 @@ class DiaryFragment(override val layoutResourceId: Int = R.layout.fragment_diary
                 DiaryFragmentDirections.actionDiaryWrittingFragment(),
                 getNavOptions
             )
+        }
+        viewDataBinding.calendarImageView.setOnClickListener{
+            showDatePicker()
+        }
+    }
+    private fun showDatePicker() {
+        val datePicker = MaterialDatePicker.Builder.datePicker().build()
+        datePicker.show(childFragmentManager, "DatePicker")
+
+        // Setting up the event for when ok is clicked
+        datePicker.addOnPositiveButtonClickListener {
+            // formatting date in dd-mm-yyyy format.
+            val dateFormatter = SimpleDateFormat("dd-MM-yyyy")
+            val date = dateFormatter.format(Date(it))
+            Toast.makeText(requireContext(), "$date is selected", Toast.LENGTH_LONG).show()
+
+        }
+
+        // Setting up the event for when cancelled is clicked
+        datePicker.addOnNegativeButtonClickListener {
+            Toast.makeText(requireContext(), "${datePicker.headerText} is cancelled", Toast.LENGTH_LONG).show()
+        }
+
+        // Setting up the event for when back button is pressed
+        datePicker.addOnCancelListener {
+            Toast.makeText(requireContext(), "Date Picker Cancelled", Toast.LENGTH_LONG).show()
         }
     }
 
