@@ -8,8 +8,8 @@ plugins {
 }
 apply plugin : 'kotlin-kapt'
 
-def Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    def Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
     namespace 'bu.ac.kr.diaryroom'
@@ -23,7 +23,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "WEATHER_API_KEY", properties.getProperty("url.weather"))
+        buildConfigField("String", "WEATHER_API_KEY", "\"${System.getenv("WEATHER_API_KEY")}\"")
 
     }
 
