@@ -24,3 +24,5 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+      env:
+        WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
