@@ -29,11 +29,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         String weatherApiKey = System.getenv("WEATHER_API_KEY") ?: properties.getProperty("url.weather")
-        if (weatherApiKey == null) {
-            throw new GradleException("WEATHER_API_KEY is not set")
-        }
         buildConfigField("String", "WEATHER_API_KEY", weatherApiKey)
-
 
     }
 
