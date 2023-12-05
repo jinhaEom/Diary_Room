@@ -8,8 +8,12 @@ plugins {
 }
 apply plugin : 'kotlin-kapt'
 
-    def Properties properties = new Properties()
+def Properties properties = new Properties()
+
+// local.properties 파일이 존재하면 로드하고, 없으면 빈 Properties를 사용
+if (project.rootProject.file('local.properties').exists()) {
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
+}
 
 android {
     namespace 'bu.ac.kr.diaryroom'
@@ -23,8 +27,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "WEATHER_API_KEY", "\"${System.getenv("WEATHER_API_KEY")}\"")
-
+        if (project.rootProject.file('local.properties').exists() && properties.containsKey("url.weather")) {
+            buildConfigField("String", "WEATHER_API_KEY", properties.getProperty("url.weather"))
+        }
     }
 
     buildTypes {
