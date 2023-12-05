@@ -9,11 +9,7 @@ plugins {
 apply plugin : 'kotlin-kapt'
 
 def Properties properties = new Properties()
-
-// local.properties 파일이 존재하면 로드하고, 없으면 빈 Properties를 사용
-if (project.rootProject.file('local.properties').exists()) {
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
-}
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
     namespace 'bu.ac.kr.diaryroom'
@@ -27,9 +23,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        if (project.rootProject.file('local.properties').exists() && properties.containsKey("url.weather")) {
-            buildConfigField("String", "WEATHER_API_KEY", properties.getProperty("url.weather"))
-        }
+        buildConfigField("String", "WEATHER_API_KEY", properties.getProperty("url.weather"))
+
     }
 
     buildTypes {
@@ -78,7 +73,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
     def room_version = "2.5.0"
 

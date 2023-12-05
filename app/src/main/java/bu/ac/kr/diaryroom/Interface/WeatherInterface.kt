@@ -15,9 +15,9 @@ import retrofit2.http.Query
 
 interface WeatherInterface {
     // getUltraSrtFcst : 초단기 예보 조회 + 인증키
-    @GET("getUltraSrtFcst?serviceKey=${BuildConfig.WEATHER_API_KEY}")
-
-    fun GetWeather(@Query("numOfRows") num_of_rows : Int,   // 한 페이지 경과 수
+    @GET("getUltraSrtFcst")
+    fun GetWeather(@Query("serviceKey") serviceKey: String = BuildConfig.WEATHER_API_KEY,
+                   @Query("numOfRows") num_of_rows : Int,   // 한 페이지 경과 수
                    @Query("pageNo") page_no : Int,          // 페이지 번호
                    @Query("dataType") data_type : String,   // 응답 자료 형식
                    @Query("base_date") base_date : String,  // 발표 일자
@@ -26,7 +26,6 @@ interface WeatherInterface {
                    @Query("ny") ny : String)                // 예보지점 Y 좌표
             : Call<WEATHER>
 }
-
 
 // xml 파일 형식을 data class로 구현
 data class WEATHER (val response : RESPONSE)
