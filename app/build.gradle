@@ -9,7 +9,12 @@ plugins {
 apply plugin : 'kotlin-kapt'
 
 def Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+//ci 환경 대비
+File localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    properties.load(localPropertiesFile.newDataInputStream())
+}
 
 android {
     namespace 'bu.ac.kr.diaryroom'
