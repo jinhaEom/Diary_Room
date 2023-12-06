@@ -109,6 +109,68 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nowWeather" />
+        <androidx.cardview.widget.CardView
+            app:layout_constraintTop_toBottomOf="@id/weatherRecyclerView"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="240dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ootdTx"
+                android:text="Today's OOTD"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/appfont"/>
+
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                tools:text="스웨터 및 패딩"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                android:layout_marginStart="24dp"-->
+<!--                android:fontFamily="@font/appfont"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/clothImg"-->
+<!--                android:textSize="24dp"/>-->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/clothImg1"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="24dp"
+                tools:src="@drawable/ic_longpadding"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ootdTx" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/clothImg2"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                tools:src="@drawable/ic_scarf"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toEndOf="@id/clothImg1"
+                app:layout_constraintTop_toBottomOf="@id/ootdTx"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

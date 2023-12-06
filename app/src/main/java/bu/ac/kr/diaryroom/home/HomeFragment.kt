@@ -82,6 +82,34 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 viewDataBinding.nowTvSky.text = recentWeather.sky
                 viewDataBinding.nowTvHumidity.text = "${recentWeather.humidity}%"
 
+                val ootdTemp : Int = recentWeather.temp.toInt()
+                when {
+                    ootdTemp < -20 -> {
+                        // -20도 미만
+                        viewDataBinding.clothImg1.setImageResource(R.drawable.ic_longpadding)
+                        viewDataBinding.clothImg2.setImageResource(R.drawable.ic_scarf)
+                    }
+                    ootdTemp in -20 until 0 -> {
+                        // -20도 이상, 0도 미만
+                        viewDataBinding.clothImg1.setImageResource(R.drawable.ic_shortpadding)
+                        viewDataBinding.clothImg2.setImageResource(R.drawable.ic_earplug)
+
+                    }
+                    ootdTemp in 0 until 20 -> {
+                        // 0도 이상, 20도 미만
+                        viewDataBinding.clothImg1.setImageResource(R.drawable.ic_jacket)
+                        viewDataBinding.clothImg2.setImageResource(R.drawable.ic_tshirts)
+                    }
+                    else -> {
+                        // 20도 이상
+                        viewDataBinding.clothImg1.setImageResource(R.drawable.ic_tshirts)
+                        viewDataBinding.clothImg2.setImageResource(R.drawable.ic_shortpants)
+
+                    }
+                }
+
+
+
                 when (recentWeather.sky) {
                     "1" -> {
                         viewDataBinding.nowTvSky.text = requireContext().getString(R.string.sun)

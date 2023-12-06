@@ -8,11 +8,14 @@ DiaryRoom 어플의 Tab은 총 3개의 Framgnet로 구성되어있다.
 
 
 - HomeFragment
-  + HomeFragment에서는 날씨정보(기온,습도)를 확인 할 수 있다.
+  + HomeFragment에서는 날씨정보(기온,습도),오늘의 추천의상을 확인 할 수 있다.
   + 날씨 정보는 data.go.kr의 api 정보를 기본으로 한다.
   + 오늘의 날씨정보와 일기를 쓰도록 하는 추천문구를 나타낸다.
-  &nbsp;
-  <img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/6ebd60ff-edc8-48e7-bf50-ee4186be0589" width="200" height="450"/>
+  + Today's OOTD를 통해 오늘의 의상을 추천해준다.
+  <br>
+    <br>
+    &nbsp;
+  <img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/03a49769-7958-4c77-8f52-a12ec9fbf93f" width="200" height="450"/>
   &nbsp;
 
 - DiaryFragment
