@@ -23,10 +23,8 @@ class DiaryViewModel(private val diaryItemDao: DiaryItemDao) : ViewModel() {
         return diaryItemDao.getAllDiaryItems()
     }
 
-    fun addDiaryItem(item: DiaryItem) {
-        viewModelScope.launch {
-            diaryItemDao.insertDiaryItem(item)
-        }
+    fun getDiaryItemsForDate(date: String): LiveData<List<DiaryItem>> {
+        return diaryItemDao.getDiaryItemsForDate(date)
     }
     fun selectDiaryItem(item: DiaryItem) {
         _selectedDiaryItem.value = item

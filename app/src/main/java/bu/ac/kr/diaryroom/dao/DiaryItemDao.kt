@@ -22,6 +22,8 @@ interface DiaryItemDao {
 
     @Query("SELECT * FROM diary_items WHERE date = :todayDate LIMIT 1")
     fun getTodayDiary(todayDate: String): LiveData<DiaryItem?>
+    @Query("SELECT * FROM diary_items WHERE date = :date")
+    fun getDiaryItemsForDate(date: String): LiveData<List<DiaryItem>>
 
 }
 

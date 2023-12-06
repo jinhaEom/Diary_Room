@@ -2,6 +2,7 @@ package bu.ac.kr.diaryroom.diary
 
 import DiaryAdapter
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -46,6 +47,13 @@ class DiaryFragment(override val layoutResourceId: Int = R.layout.fragment_diary
                 getNavOptions
             )
         }
+        viewDataBinding.allImageView.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                diaryViewModel.getAllDiaryItems().collect { items ->
+                    diaryAdapter.submitList(items)
+                }
+            }
+        }
         viewDataBinding.calendarImageView.setOnClickListener{
             showDatePicker()
         }
@@ -54,24 +62,15 @@ class DiaryFragment(override val layoutResourceId: Int = R.layout.fragment_diary
         val datePicker = MaterialDatePicker.Builder.datePicker().build()
         datePicker.show(childFragmentManager, "DatePicker")
 
-        // Setting up the event for when ok is clicked
         datePicker.addOnPositiveButtonClickListener {
-            // formatting date in dd-mm-yyyy format.
-            val dateFormatter = SimpleDateFormat("dd-MM-yyyy")
+            val dateFormatter = SimpleDateFormat("yyyy년 MM월 dd일")
             val date = dateFormatter.format(Date(it))
-            Toast.makeText(requireContext(), "$date is selected", Toast.LENGTH_LONG).show()
-
+            diaryViewModel.getDiaryItemsForDate(date).observe(viewLifecycleOwner, Observer { items ->
+                diaryAdapter.submitList(items)
+            })
+            Toast.makeText(requireContext(), "$date 일기", Toast.LENGTH_LONG).show()
         }
 
-        // Setting up the event for when cancelled is clicked
-        datePicker.addOnNegativeButtonClickListener {
-            Toast.makeText(requireContext(), "${datePicker.headerText} is cancelled", Toast.LENGTH_LONG).show()
-        }
-
-        // Setting up the event for when back button is pressed
-        datePicker.addOnCancelListener {
-            Toast.makeText(requireContext(), "Date Picker Cancelled", Toast.LENGTH_LONG).show()
-        }
     }
 
     override fun observeData() {
