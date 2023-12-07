@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import bu.ac.kr.diaryroom.dialog.DialogHelper
 import bu.ac.kr.diaryroom.R
 import bu.ac.kr.diaryroom.base.BaseFragment
 import bu.ac.kr.diaryroom.databinding.FragmentDiaryBinding
@@ -34,6 +35,7 @@ class DiaryFragment(override val layoutResourceId: Int = R.layout.fragment_diary
 
         viewDataBinding.diaryRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         viewDataBinding.diaryRecyclerView.adapter = diaryAdapter
+        val dialogHelper = DialogHelper(requireContext(), viewLifecycleOwner, diaryViewModel)
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             diaryViewModel.getAllDiaryItems().collect { items ->
@@ -47,15 +49,15 @@ class DiaryFragment(override val layoutResourceId: Int = R.layout.fragment_diary
                 getNavOptions
             )
         }
-        viewDataBinding.allImageView.setOnClickListener {
-            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                diaryViewModel.getAllDiaryItems().collect { items ->
-                    diaryAdapter.submitList(items)
-                }
-            }
-        }
-        viewDataBinding.calendarImageView.setOnClickListener{
-            showDatePicker()
+
+        viewDataBinding.calendarImageView.setOnClickListener {
+            val dialog = dialogHelper.createDialog(
+                showDatePicker = { showDatePicker() },
+                submitList = { items -> diaryAdapter.submitList(items) }
+            )
+            dialog.show()
+            val params = dialogHelper.getDialogLayoutParams(dialog)
+            dialog.window?.attributes = params
         }
     }
     private fun showDatePicker() {
@@ -72,7 +74,6 @@ class DiaryFragment(override val layoutResourceId: Int = R.layout.fragment_diary
         }
 
     }
-
     override fun observeData() {
     }
 }

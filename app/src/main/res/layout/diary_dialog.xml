@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="48dp"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dialog"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/dialogSpecDate"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="특정 날짜 diary 보기"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/dialogAllDate"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="전체 Diary 보기"
+        android:layout_gravity="center"/>
+</LinearLayout>

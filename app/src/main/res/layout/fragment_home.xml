@@ -137,15 +137,6 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/appfont"/>
 
-<!--            <androidx.appcompat.widget.AppCompatTextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                tools:text="스웨터 및 패딩"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                android:layout_marginStart="24dp"-->
-<!--                android:fontFamily="@font/appfont"-->
-<!--                app:layout_constraintBottom_toBottomOf="@id/clothImg"-->
-<!--                android:textSize="24dp"/>-->
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/clothImg1"
                 android:layout_width="130dp"
@@ -159,12 +150,11 @@
                 android:id="@+id/clothImg2"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                tools:src="@drawable/ic_scarf"
-                android:layout_marginStart="24dp"
-                app:layout_constraintStart_toEndOf="@id/clothImg1"
-                app:layout_constraintTop_toBottomOf="@id/ootdTx"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="24dp"/>
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ootdTx"
+                tools:src="@drawable/ic_scarf" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
