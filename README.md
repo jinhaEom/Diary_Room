@@ -8,8 +8,8 @@ DiaryRoom 어플의 Tab은 총 3개의 Framgnet로 구성되어있다.
 
 |화면|이미지|설명|
 |:---|---:|:---:|
-|HomeFragment|  <img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/03a49769-7958-4c77-8f52-a12ec9fbf93f"  width="190" height="430"/> &nbsp;<img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/c8ea560c-a7da-4ef9-bcae-fbe899241b48"  width="190" height="430"/>|날씨및 OOTD|
-|DiaryFragment|  <img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/591d95da-e684-4961-904c-d39226c1926e"  width="190" height="430"/> &nbsp; <img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/e6aac755-973b-402d-981e-13d0770b185c" width="190" height="430"/> &nbsp; <img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/f54cca45-265b-4bd4-b520-62227ec90a48"  width="190" height="430"/>|다이어리 작성|
+|HomeFragment|  <img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/03a49769-7958-4c77-8f52-a12ec9fbf93f"  width="150" height="350"/> &nbsp;<img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/c8ea560c-a7da-4ef9-bcae-fbe899241b48" width="150" height="350"/>|날씨및 OOTD|
+|DiaryFragment|  <img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/591d95da-e684-4961-904c-d39226c1926e"  width="150" height="350"/> &nbsp; <img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/e6aac755-973b-402d-981e-13d0770b185c" width="150" height="350"/> &nbsp; <img src="https://github.com/jinhaEom/Diary_Room/assets/84216838/f54cca45-265b-4bd4-b520-62227ec90a48"  width="150" height="350"/>|다이어리 작성|
 |SettingFragment|구상 진행 중|구상 진행 중|
 - HomeFragment
   + HomeFragment에서는 날씨정보(기온,습도),오늘의 추천의상을 확인 할 수 있다.

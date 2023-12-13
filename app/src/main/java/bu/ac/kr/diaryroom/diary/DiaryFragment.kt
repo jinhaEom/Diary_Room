@@ -1,6 +1,7 @@
 package bu.ac.kr.diaryroom.diary
 
 import DiaryAdapter
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -48,6 +49,12 @@ class DiaryFragment(override val layoutResourceId: Int = R.layout.fragment_diary
                 DiaryFragmentDirections.actionDiaryWrittingFragment(),
                 getNavOptions
             )
+        }
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            diaryViewModel.getAllDiaryItems().collect { items ->
+                diaryAdapter.submitList(items)
+
+            }
         }
 
         viewDataBinding.calendarImageView.setOnClickListener {
