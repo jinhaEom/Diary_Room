@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_dark_000000_ffffff">#ffffff</color>
+    <color name="color_dark_ffffff_000000">#000000</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="signature_color">#2d334f</color>
+    <color name="white">#191919</color>
+    <color name="black">#FFFFFFFF</color>
+    <color name="light_black">#353535</color>
+    <color name="dark_blue">#B2CCFF</color>
+    <color name="gray_100">#2d334f</color>
+</resources>

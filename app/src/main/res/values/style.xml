@@ -1,0 +1,8 @@
+<resources>
+    <style name="RadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:background">@drawable/background_signature_color_radius_8dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+</resources>
