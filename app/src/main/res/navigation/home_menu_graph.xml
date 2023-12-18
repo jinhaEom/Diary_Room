@@ -47,6 +47,9 @@
         <action
             android:id="@+id/actionSettingFragment"
             app:destination="@id/settingFragment"/>
+        <action
+            android:id="@+id/actionsetThemeFragment"
+            app:destination="@id/setThemeFragment"/>
     </fragment>
     <fragment
         android:id="@+id/diaryDetailFragment"
@@ -56,5 +59,12 @@
     <action
         android:id="@id/actionDiaryFragment"
         app:destination="@id/diaryFragment"/>
+
+    <fragment
+        android:id="@+id/setThemeFragment"
+        android:name="bu.ac.kr.diaryroom.setting.SetThemeFragment"
+        android:label="setThemeFragment"
+        tools:layout="@layout/fragment_set_theme"
+        />
 
 </navigation>

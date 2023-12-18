@@ -28,7 +28,7 @@
         app:itemIconSize="22dp"
         app:itemIconTint="#85A0E6"
         app:backgroundTint="@color/white"
-        app:itemTextColor="@color/black"
+        app:itemTextColor="@color/light_black"
         app:itemRippleColor="@android:color/transparent"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/navi_menu" />

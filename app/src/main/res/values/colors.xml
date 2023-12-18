@@ -6,6 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="light_black">#353535</color>
     <color name="white">#FFFFFFFF</color>
 
 
@@ -17,8 +18,13 @@
 
     <color name="signature_color">#B4C4EF</color>
     <color name="light_signature_color">#D5E2F9</color>
-    <color name="dark_blue">#707287</color>
+    <color name="dark_blue">#2d334f</color>
     <color name="dark104_blue">#545768</color>
+    <color name="title_blue">#5974bd</color>
 
-
+    <color name="color_dark_000000_ffffff">#000000</color>
+    <color name="color_dark_ffffff_000000">#ffffff</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
 </resources>
